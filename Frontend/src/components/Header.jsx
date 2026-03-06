@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Logo from "../Images/Ecom-Logo.png";
+import Logo from "../Images/screen.png";
 import { Menu, X, ShoppingCart, Search, User } from "lucide-react";
 import gsap from "gsap";
 import { Link, useNavigate } from "react-router-dom";
@@ -47,21 +47,19 @@ function Header() {
         <div className="w-full bg-[#faf8f5] border-b border-[#ece8e1]">
 
             {/* Desktop */}
-            <div className="hidden xl:flex items-center justify-between px-12 py-4 w-full">
+            <div className="hidden xl:flex items-center justify-between px-12 py-2 w-full">
 
-             
+
                 <Link to="/">
                     <div className="flex items-center gap-2">
-                        <div className="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center">
-                            <img src={Logo} className="h-6 w-6 object-contain" />
-                        </div>
+                        <img src={Logo} className="h-16 w-16 rounded-2xl object-contain" />
                         <span className="font-playfair font-bold text-lg text-gray-900">
                             ShopSwift
                         </span>
                     </div>
                 </Link>
 
-               
+
                 <div className="flex items-center gap-10 text-sm font-medium text-gray-600">
                     <Link to="/" className="text-gray-700 font-semibold hover:text-orange-600 transition duration-200">Home</Link>
                     <Link to="/shop" className="text-gray-700 font-semibold hover:text-orange-600 transition duration-200">Shop</Link>
@@ -69,7 +67,7 @@ function Header() {
                     <Link to="/new-arrivals" className="text-gray-700 font-semibold hover:text-orange-600 transition duration-200">New Arrivals</Link>
                 </div>
 
-               
+
                 <div className="flex items-center gap-4">
 
                     {/* Search bar */}

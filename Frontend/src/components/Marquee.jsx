@@ -70,7 +70,7 @@ function Marquee() {
   return (
     <section className="w-full bg-white border-y border-orange-100
                         shadow-[0_4px_20px_rgba(37,99,235,0.05)]
-                        overflow-hidden select-none py-5">
+                        overflow-hidden select-none py-10">
       <div className="relative">
 
         {/* Fade edges */}

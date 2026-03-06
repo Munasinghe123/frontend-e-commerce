@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Home from './pages/open/Home'
 import Login from './pages/open/Login'
 import Register from './pages/open/Register'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
           </Routes>
         </main>
+        <Footer/>
 
       </div>
     </BrowserRouter>

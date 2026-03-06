@@ -1,63 +1,85 @@
-import React from "react";
-import HeroImg from "../Images/Ecom-Hero.jpg";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import shoe from '../Images/hero1.jpg';
+import bag from '../Images/hero2.jpg';
 
-function LandingPage() {
+export default function LandingPage() {
     return (
-        <div className="flex items-center justify-center min-h-[calc(100vh-73px)] bg-[#faf8f5] px-6 lg:px-12 py-8">
+        <div className="min-h-screen w-full bg-[#F5F0EB] flex items-start pb-3 px-14 pt-12">
 
-            <div className="w-full max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="grid xl:grid-cols-3">
+                {/* col 1 */}
+                <div className="flex flex-col justify-between min-h-[90vh] max-w-xl">
 
-                    {/* Left */}
-                    <div className="relative">
-                        <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 border border-[#ece8e1]">
-                            <img
-                                src={HeroImg}
-                                className="rounded-2xl object-cover w-full max-h-[520px]
-                                           hover:scale-[1.02] transition duration-500"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Right */}
-                    <div className="flex flex-col xl:pl-16 space-y-7">
-
-                        <span className="inline-block w-fit px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500 bg-orange-50 border border-orange-200 rounded-full">
-                            ✦ Summer Collection 2026
-                        </span>
-                       
-                        <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] text-gray-900">
-                            Experience
-                            <br />
-                            <span className="text-orange-500 font-playfair italic">Style</span>
-                            <span className="text-gray-900"> with</span>
-                            <br />
-                            ShopSwift
-                        </h1>
-  
-                        <p className="text-gray-500 max-w-md leading-relaxed text-base">
-                            Discover the latest trends in lifestyle and fashion
-                            with lightning-fast delivery that keeps up with your life.
+                    <div>
+                        {/* Eyebrow */}
+                        <p className="text-[11px] tracking-[0.22em] uppercase text-[#E8420A] font-medium mb-4">
+                            New Arrival Products
                         </p>
 
-                     
-                        <div className="flex flex-wrap gap-4 pt-2">
-                            <button className="flex items-center gap-2 px-8 py-3.5 bg-orange-500 text-white rounded-full font-bold text-sm shadow-[0_8px_20px_rgba(249,115,22,0.35)] hover:bg-orange-600 hover:shadow-[0_8px_30px_rgba(249,115,22,0.5)] hover:scale-[1.03] transition-all duration-300">
+                        {/* Heading */}
+                        <h1 className="font-serif font-bold leading-[1] text-[clamp(3rem,5.5vw,5.5rem)] text-black mb-6">
+                            The Best <br />
+                            Look <br />
+                            <em className="italic text-[#E8420A]">Anytime</em> <br />
+                            Anywhere
+                        </h1>
+
+                        {/* Description */}
+                        <p className="text-[14px] text-gray-500 leading-[1.8] max-w-[300px] mb-10 font-light">
+                            Refresh your style with on-trend pieces from our latest clothing
+                            collection. Anyone can get dressed up and glamorous.
+                        </p>
+
+                        {/* Buttons */}
+                        <div className="flex items-center gap-4 flex-wrap">
+
+                            <button
+                                className="flex items-center gap-2 px-8 py-3 bg-[#E8420A] text-white 
+              rounded-full text-xs font-semibold tracking-wider uppercase
+              shadow-lg shadow-orange-500/30
+              hover:-translate-y-[2px] hover:bg-[#c93800] transition-all"
+                            >
                                 Shop Now
-                                <ArrowRight size={17} />
+                                <ArrowRight size={15} />
                             </button>
 
-                            <button className="px-8 py-3.5 border border-orange-500 rounded-full font-bold text-sm text-gray-700 hover:border-orange-600 hover:text-gray-900 transition-all duration-300">
+                            <button
+                                className="flex items-center gap-2 px-7 py-3 border border-black/20
+              rounded-full text-xs font-medium tracking-wider uppercase
+              text-gray-700 hover:border-black hover:text-black transition"
+                            >
                                 Learn More
                             </button>
-                        </div>
 
+                        </div>
+                    </div>
+                </div>
+
+                {/*col 2  */}
+                <div className="mt-10">
+                    <div className="border border-orange-200 p-4">
+                        <img
+                            src={shoe}
+                            alt="model"
+                            className="w-full object-cover"
+                        />
+                    </div>
+                </div>
+
+                {/* col 3 */}
+                <div className="mt-32">
+                    <div className="bg-gray-200 p-4">
+                        <img
+                            src={bag}
+                            alt="woman"
+                            className="w-full object-cover"
+                        />
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     );
 }
-
-export default LandingPage;
