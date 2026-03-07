@@ -4,6 +4,7 @@ import female from '../Images/landing/female.jpg';
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,12 +70,12 @@ export default function LandingPage() {
     return (
         <div
             ref={sectionRef}
-            className="min-h-screen w-full bg-[#F5F0EB] flex items-start pb-3 px-14 pt-12"
+            className="xl:min-h-screen w-full bg-[#F5F0EB] flex items-start pb-3 px-14 pt-12"
         >
             <div className="grid xl:grid-cols-3 w-full">
 
                 {/* Col 1 */}
-                <div className="col-1 flex flex-col justify-between min-h-[90vh] max-w-xl">
+                <div className="col-1 flex flex-col justify-between xl:min-h-[90vh] max-w-xl">
                     <div>
                         <p className="text-[11px] tracking-[0.22em] uppercase text-[#E8420A] font-medium mb-4">
                             New Arrival Products
@@ -93,13 +94,15 @@ export default function LandingPage() {
                         </p>
 
                         <div className="flex items-center gap-4 flex-wrap">
-                            <button className="flex items-center gap-2 px-8 py-3 bg-[#E8420A] text-white 
-                                rounded-full text-xs font-semibold tracking-wider uppercase
-                                shadow-lg shadow-orange-500/30
-                                hover:-translate-y-[2px] hover:bg-[#c93800] transition-all">
-                                Shop Now
-                                <ArrowRight size={15} />
-                            </button>
+                            <Link to='/shop'>
+                                <button className="flex items-center gap-2 px-8 py-3 bg-[#E8420A] text-white 
+                                        rounded-full text-xs font-semibold tracking-wider uppercase
+                                        shadow-lg shadow-orange-500/30
+                                        hover:-translate-y-[2px] hover:bg-[#c93800] transition-all">
+                                    Shop Now
+                                    <ArrowRight size={15} />
+                                </button>
+                            </Link>
 
                             <button className="flex items-center gap-2 px-7 py-3 border border-black/20
                                 rounded-full text-xs font-medium tracking-wider uppercase
@@ -111,14 +114,14 @@ export default function LandingPage() {
                 </div>
 
                 {/* Col 2 */}
-                <div className=" col-2 mt-10">
+                <div className="hidden xl:block col-2 mt-10">
                     <div className="male-img border border-orange-200 p-4">
                         <img src={male} alt="model" className=" w-full object-cover" />
                     </div>
                 </div>
 
                 {/* Col 3 */}
-                <div className="col-3 mt-32">
+                <div className="hidden xl:block col-3 mt-32">
                     <div className="female-img bg-gray-200 p-4">
                         <img src={female} alt="woman" className=" w-full object-cover" />
                     </div>
