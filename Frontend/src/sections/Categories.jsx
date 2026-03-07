@@ -39,7 +39,7 @@ function Categories() {
         delay: 0.3,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 20%",
+          start: "top 40%",
           toggleActions: "play reverse play reverse",
         }
       });
