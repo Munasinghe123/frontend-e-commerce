@@ -8,12 +8,12 @@ function Footer() {
     <footer className="w-full bg-gray-900 text-gray-400">
 
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div className="w-full px-20 lg:px-16 py-10 flex flex-col lg:flex-row items-center justify-between gap-8">
 
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center">
-            <img src={Logo} className="h-6 w-6 object-contain" />
+          <div className="w-9 h-9  rounded-xl flex items-center justify-center">
+            <img src={Logo} className="h-16 w-19 object-contain rounded-2xl" />
           </div>
           <span className="font-playfair font-bold text-lg text-white">
             ShopSwift

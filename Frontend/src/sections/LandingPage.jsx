@@ -87,7 +87,7 @@ export default function LandingPage() {
                             Anywhere
                         </h1>
 
-                        <p className="text-[14px] text-gray-500 leading-[1.8] max-w-[300px] mb-10 font-light">
+                        <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[300px] mb-10 font-light">
                             Refresh your style with on-trend pieces from our latest clothing
                             collection. Anyone can get dressed up and glamorous.
                         </p>
