@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Logo from "../Images/screen.png";
+import Logo from "../Images/Header/screen.png";
 import { Menu, X, ShoppingCart, Search, User } from "lucide-react";
 import gsap from "gsap";
 import { Link, useNavigate } from "react-router-dom";
@@ -44,10 +44,15 @@ function Header() {
     };
 
     return (
-        <div className="w-full bg-[#faf8f5] border-b border-[#ece8e1]">
+        <div className="w-full flex justify-center pt-6 bg-[#F5F0EB]">
 
             {/* Desktop */}
-            <div className="hidden xl:flex items-center justify-between px-12 py-2 w-full">
+            <div className="hidden xl:flex items-center justify-between px-10 py-3 
+                        w-[92%] max-w-[1400px] 
+                        bg-white/80 backdrop-blur-md
+                        border border-[#ece8e1]
+                        rounded-3xl
+                        shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
 
 
                 <Link to="/">
