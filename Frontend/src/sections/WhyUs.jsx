@@ -84,7 +84,7 @@ function WhyUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#F5F0EB] h-[90vh] pb-20 px-14">
+    <section ref={sectionRef} className="relative flex-1 bg-[#F5F0EB] xl:h-[90vh] pb-20 px-14">
 
       <h2 className="text-5xl font-serif font-bold mb-10">
         Why <span className="italic text-[#E8420A]">Choose</span> Us
@@ -95,7 +95,7 @@ function WhyUs() {
           <div
             key={i}
             ref={(el) => (cardRefs.current[i] = el)}
-            className="relative flex-1 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] cursor-pointer group"
+            className="relative flex-1 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] h-[220px] xl:h-[380px] cursor-pointer group"
             style={{
               height: card.height,
               backgroundImage: `url(${card.img})`,

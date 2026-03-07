@@ -5,8 +5,12 @@ import gsap from "gsap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useCart } from "../context/CartContext";
 
 function Header() {
+
+    const { cartItems, removeFromCart, updateQty, totalPrice, totalItems } = useCart();
+
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [cartCount, setCartCount] = useState(0);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,14 +48,14 @@ function Header() {
     };
 
     return (
-        <div className="w-full flex justify-center pt-6 bg-[#F5F0EB]">
+        <div className="w-full flex justify-center pt-6">
 
             {/* Desktop */}
             <div className="hidden xl:flex items-center justify-between px-10 py-3 
                         w-[92%] max-w-[1400px] 
                         bg-white/80 backdrop-blur-md
                         border border-[#ece8e1]
-                        rounded-3xl
+                        rounded-4xl
                         shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
 
 
@@ -90,7 +94,7 @@ function Header() {
                         <button className="relative p-2.5 rounded-full hover:bg-white transition-all border border-transparent hover:border-[#ece8e1]">
                             <ShoppingCart className="text-gray-700 w-5 h-5" />
                             <span className="absolute -top-1 -right-1 w-4 h-4 text-[10px] bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
-                                {cartCount}
+                                {totalItems}
                             </span>
                         </button>
                     </Link>
@@ -107,7 +111,7 @@ function Header() {
             </div>
 
             {/*  Mobile  */}
-            <nav className="xl:hidden flex justify-between items-center px-5 py-4">
+            <nav className="xl:hidden w-full flex justify-between items-center px-5 py-4">
                 <Link to="/">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-orange-500 rounded-xl flex items-center justify-center">
