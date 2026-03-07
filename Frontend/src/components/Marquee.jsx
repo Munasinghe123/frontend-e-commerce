@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Nike from '../Images/nike.png';
-import Calvin from '../Images/calvin.png';
-import Levis from '../Images/levis.jpg';
-import Adidas from '../Images/adids.png';
-import Puma from '../Images/puma.png';
+import Nike from '../Images/marquee/nike.png';
+import Calvin from '../Images/marquee/calvin.png';
+import Levis from '../Images/marquee/levis.jpg';
+import Adidas from '../Images/marquee/adids.png';
+import Puma from '../Images/marquee/puma.png';
 
 const brands = [
   { name: "Nike",         img: Nike,    style: "font-black tracking-widest text-xl" },

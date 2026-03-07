@@ -1,178 +1,120 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Truck, RefreshCw, ShieldCheck, Headphones } from "lucide-react";
+
+import quality from "../Images/whyUs/clothes.jpg";
+import payments from "../Images/whyUs/payments.jpg";
+import delivery from "../Images/whyUs/delivery.jpg";
+import support from "../Images/whyUs/support.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
+const cards = [
   {
-    icon: <Truck className="w-7 h-7" />,
-    title: "Free Shipping",
-    desc: "Free delivery on all orders over $50. Fast and reliable worldwide.",
-    accent: "#f97316",
-    bg: "#fff7ed",
-    position: "top",    // ← top card
+    img: quality,
+    title: "Premium Quality",
+    desc: "Every product is carefully selected and quality tested.",
+    height: "h-[340px]",   // tall
+    float: { duration: 3.2, yAmount: 14, delay: 0 },
   },
   {
-    icon: <Headphones className="w-7 h-7" />,
+    img: payments,
+    title: "Secure Payments",
+    desc: "All payments are encrypted and protected.",
+    height: "h-[260px]",   // short
+    float: { duration: 2.8, yAmount: 10, delay: 0.4 },
+  },
+  {
+    img: delivery,
+    title: "Fast Delivery",
+    desc: "Nationwide shipping within 2–3 days.",
+    height: "h-[270px]",   // short
+    float: { duration: 3.6, yAmount: 12, delay: 0.8 },
+  },
+  {
+    img: support,
     title: "24/7 Support",
-    desc: "Our team is always here to help you anytime, day or night.",
-    accent: "#c87ca8",
-    bg: "#f0dded",
-    position: "left",   // ← left card
-  },
-  {
-    icon: <ShieldCheck className="w-7 h-7" />,
-    title: "Secure Checkout",
-    desc: "Your payment info is always safe with 256-bit SSL encryption.",
-    accent: "#8fbc6e",
-    bg: "#e8f0de",
-    position: "right",  // ← right card
-  },
-  {
-    icon: <RefreshCw className="w-7 h-7" />,
-    title: "Easy Returns",
-    desc: "Not happy? Return within 30 days — no questions asked.",
-    accent: "#7ca8c8",
-    bg: "#dde8f0",
-    position: "bottom", // ← bottom card
+    desc: "Our team is always here to help you.",
+    height: "h-[350px]",   // tall
+    float: { duration: 3.0, yAmount: 16, delay: 0.2 },
   },
 ];
 
-// Animation directions per position
-const animFrom = {
-  top:    { opacity: 0, y: -60 },
-  bottom: { opacity: 0, y:  60 },
-  left:   { opacity: 0, x: -60 },
-  right:  { opacity: 0, x:  60 },
-};
-
 function WhyUs() {
   const sectionRef = useRef(null);
-  const cardRefs   = useRef({});
-  const centerRef  = useRef(null);
+  const cardRefs = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
-      // Center fades in
-      gsap.fromTo(centerRef.current,
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1, scale: 1,
-          duration: 0.8, ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 50%",
-            toggleActions: "play reverse play reverse",
-          }
-        }
-      );
-
-      // Each card flies in from its direction
-      features.forEach((f) => {
-        gsap.fromTo(cardRefs.current[f.position],
-          animFrom[f.position],
+      // Fade + slide up on scroll enter
+      cardRefs.current.forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40 },
           {
-            opacity: 1, x: 0, y: 0,
-            duration: 0.8, ease: "power3.out",
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.12,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 50%",
-              toggleActions: "play reverse play reverse",
-            }
+              start: "top 70%",
+              toggleActions: "play none none none",
+            },
           }
         );
-      });
 
+        // Yo-yo float after entry
+        const { duration, yAmount, delay } = cards[i].float;
+        gsap.to(card, {
+          y: `-=${yAmount}`,
+          duration,
+          delay,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const Card = ({ feature }) => (
-    <div
-      ref={el => cardRefs.current[feature.position] = el}
-      className="group rounded-3xl p-8 border border-[#ece8e1] bg-white
-                 hover:shadow-[0_20px_40px_rgba(0,0,0,0.07)]
-                 hover:-translate-y-1 transition-all duration-300 cursor-default
-                 opacity-0"
-    >
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5
-                   transition-transform duration-300 group-hover:scale-110"
-        style={{ backgroundColor: feature.bg, color: feature.accent }}
-      >
-        {feature.icon}
-      </div>
-      <h3 className="font-black text-gray-900 text-lg mb-2">{feature.title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-      <div
-        className="mt-6 h-1 w-0 group-hover:w-full rounded-full transition-all duration-500"
-        style={{ backgroundColor: feature.accent }}
-      />
-    </div>
-  );
-
-  const topCard    = features.find(f => f.position === "top");
-  const leftCard   = features.find(f => f.position === "left");
-  const rightCard  = features.find(f => f.position === "right");
-  const bottomCard = features.find(f => f.position === "bottom");
-
   return (
-    <section ref={sectionRef} className="w-full bg-[#faf8f5] px-6 lg:px-12 py-20">
+    <section ref={sectionRef} className="relative bg-[#F5F0EB] pb-32 px-6">
+      <h2 className="text-center text-5xl font-serif font-bold mb-20">
+        Why <span className="italic text-[#E8420A]">Choose</span> Us
+      </h2>
 
-      <div className="max-w-4xl mx-auto">
-
-        {/* Top card — centered */}
-        <div className="flex justify-center mb-6">
-          <div className="w-full max-w-sm">
-            <Card feature={topCard} />
-          </div>
-        </div>
-
-        {/* Middle row — left card | center title | right card */}
-        <div className="flex items-center gap-6">
-
-          {/* Left card */}
-          <div className="flex-1">
-            <Card feature={leftCard} />
-          </div>
-
-          {/* Center title */}
+      {/* 2x2 grid — left col cards are taller, right col shorter (or vice versa) */}
+      <div className="max-w-4xl mx-auto grid grid-cols-2 gap-5 items-end">
+        {cards.map((card, i) => (
           <div
-            ref={centerRef}
-            className="flex-shrink-0 w-52 h-52 rounded-full bg-gray-900
-                       flex flex-col items-center justify-center text-center
-                       shadow-[0_20px_60px_rgba(0,0,0,0.15)] opacity-0"
+            key={i}
+            ref={(el) => (cardRefs.current[i] = el)}
+            className={`why-card relative ${card.height} rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] cursor-pointer group`}
+            style={{
+              backgroundImage: `url(${card.img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0, // start hidden for scroll reveal
+            }}
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-400 mb-2">
-              ✦ Why Us
-            </span>
-            <h2 className="text-2xl font-black text-white leading-tight">
-              Built for
-              <br />
-              <span className="font-playfair italic text-orange-400">You</span>
-            </h2>
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/80" />
+
+            {/* Content */}
+            <div className="absolute bottom-8 left-8 text-white max-w-xs">
+              <h3 className="text-2xl font-bold mb-1">{card.title}</h3>
+              <p className="text-white/75 text-sm leading-snug">{card.desc}</p>
+              <button className="mt-4 text-xs font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Learn More →
+              </button>
+            </div>
           </div>
-
-          {/* Right card */}
-          <div className="flex-1">
-            <Card feature={rightCard} />
-          </div>
-
-        </div>
-
-        {/* Bottom card — centered */}
-        <div className="flex justify-center mt-6">
-          <div className="w-full max-w-sm">
-            <Card feature={bottomCard} />
-          </div>
-        </div>
-
+        ))}
       </div>
-
     </section>
   );
 }
