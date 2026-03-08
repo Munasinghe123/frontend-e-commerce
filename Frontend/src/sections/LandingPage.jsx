@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+import arrow from '../Images/landing/arrow.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,34 +71,34 @@ export default function LandingPage() {
     return (
         <div
             ref={sectionRef}
-            className="xl:min-h-screen w-full bg-[#F5F0EB] flex items-start pb-3 px-14 pt-12"
+            className="xl:min-h-screen w-full bg-[#F5F0EB] flex items-start pb-3 px-14 pt-6"
         >
             <div className="grid xl:grid-cols-3 w-full">
 
                 {/* Col 1 */}
                 <div className="col-1 flex flex-col justify-between xl:min-h-[90vh] max-w-xl">
-                    <div>
-                        <p className="text-[11px] tracking-[0.22em] uppercase text-[#E8420A] font-medium mb-4">
+                    <div className="space-y-8 relative">
+                        <p className="text-[11px] tracking-[0.22em] uppercase text-[#E8420A] font-medium ">
                             New Arrival Products
                         </p>
 
-                        <h1 className="font-serif font-bold leading-[1] text-[clamp(3rem,5.5vw,5.5rem)] text-black mb-6">
+                        <h1 className="font-serif font-bold leading-[1] text-[clamp(3rem,5.5vw,5.5rem)] text-black">
                             The Best <br />
                             Look <br />
                             <em className="italic text-[#E8420A]">Anytime</em> <br />
                             Anywhere
                         </h1>
 
-                        <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[300px] mb-10 font-light">
+                        <p className="text-[15px] text-gray-500 leading-[1.8] max-w-[300px] font-light">
                             Refresh your style with on-trend pieces from our latest clothing
                             collection. Anyone can get dressed up and glamorous.
                         </p>
 
-                        <div className="flex items-center gap-4 flex-wrap">
+                        <div className="flex items-center gap-4 flex-wrap relative">
                             <Link to='/shop'>
                                 <button className="flex items-center gap-2 px-8 py-3 bg-[#E8420A] text-white 
                                         rounded-full text-xs font-semibold tracking-wider uppercase
-                                        shadow-lg shadow-orange-500/30
+                                        shadow-lg shadow-orange-500/30 
                                         hover:-translate-y-[2px] hover:bg-[#c93800] transition-all">
                                     Shop Now
                                     <ArrowRight size={15} />
@@ -109,7 +110,21 @@ export default function LandingPage() {
                                 text-gray-700 hover:border-black hover:text-black transition">
                                 Learn More
                             </button>
+                            <img src={arrow}
+                                className="hidden md:block absolute"
+                                style={{
+                                    //    transform:"scaleY(-1)",
+                                    transform: "rotate(40deg)",
+                                    width: "200px",
+                                    position: "absolute",
+                                    left: "50px",
+                                    top: "50px"
+
+                                }}
+                            />
                         </div>
+
+
                     </div>
                 </div>
 

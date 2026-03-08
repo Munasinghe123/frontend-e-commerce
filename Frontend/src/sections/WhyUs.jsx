@@ -84,11 +84,14 @@ function WhyUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative flex-1 bg-[#F5F0EB] xl:h-[90vh] pb-20 px-14">
+    <section ref={sectionRef} className="relative flex-1 bg-[#F5F0EB] xl:h-[100vh] pb-10 px-14 lg:py-10">
 
-      <h2 className="text-5xl font-serif font-bold mb-10">
-        Why <span className="italic text-[#E8420A]">Choose</span> Us
-      </h2>
+      <div className="space-y-5 ">
+        <h2 className="text-5xl font-serif font-bold">
+          Why <span className="italic text-[#E8420A]">Choose</span> Us
+        </h2>
+        <p className="font-light italic text-gray-800">Everything we do is built around you</p>
+      </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-4 items-end gap-5 w-full">
         {cards.map((card, i) => (
@@ -103,10 +106,10 @@ function WhyUs() {
               backgroundPosition: "center",
               opacity: 0,
               willChange: "transform",
-            
+
             }}
           >
-           
+
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/80" />
 
             <div className="absolute bottom-8 left-4  text-white max-w-[200px]">

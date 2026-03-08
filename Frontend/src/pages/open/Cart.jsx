@@ -18,14 +18,14 @@ function Cart() {
                 <div className="mb-10">
                     <Link
                         to="/shop"
-                        className="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-black transition mb-4 uppercase tracking-wider"
+                        className="inline-flex items-center gap-2 text-xs text-gray-500 hover:text-black transition mb-4 uppercase tracking-wider"
                     >
                         <ArrowLeft size={13} /> Continue Shopping
                     </Link>
                     <h1 className="font-serif font-bold text-4xl lg:text-5xl text-gray-900">
                         Your <span className="italic text-[#E8420A]">Cart</span>
                     </h1>
-                    <p className="text-sm text-gray-400 mt-2">
+                    <p className="text-sm font-light italic text-gray-800 mt-2">
                         {totalItems === 0
                             ? "No items yet"
                             : `${totalItems} item${totalItems > 1 ? "s" : ""} in your cart`}
@@ -48,7 +48,7 @@ function Cart() {
                         </Link>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white rounded-2xl p-5 ">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white rounded-2xl p-5  shadow-[0_15px_40px_rgba(0,0,0,0.08)]">
 
                         {/* Cart Items */}
                         <div className="lg:col-span-2 rounded-2xl overflow-hidden ">
