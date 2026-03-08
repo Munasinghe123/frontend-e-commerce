@@ -93,9 +93,14 @@ function Header() {
                     <Link to="/cart">
                         <button className="relative p-2.5 rounded-full hover:bg-white transition-all border border-transparent hover:border-[#ece8e1]">
                             <ShoppingCart className="text-gray-700 w-5 h-5" />
-                            <span className="absolute -top-1 -right-1 w-4 h-4 text-[10px] bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
-                                {totalItems}
-                            </span>
+                            {
+                                totalItems > 0 && (
+                                    <span className="absolute -top-1 -right-1 w-4 h-4 text-[10px] bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">
+                                        {totalItems}
+                                    </span>
+                                )
+                            }
+
                         </button>
                     </Link>
 

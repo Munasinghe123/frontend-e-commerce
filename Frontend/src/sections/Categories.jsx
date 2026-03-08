@@ -111,15 +111,16 @@ function Categories() {
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={sectionRef} className="w-full min-h-screen bg-[#F5F0EB] px-6 lg:px-12 py-20">
+    <section ref={sectionRef} className="w-full min-h-screen bg-[#F5F0EB] px-6 lg:px-12 py-20 lg:py-10">
 
       {/* Title */}
       <div className="flex items-end justify-between mb-12">
-        <div>
+        <div className="space-y-5 ">
           <h2 className="font-serif font-bold text-4xl lg:text-5xl  text-gray-900 mt-2 leading-tight">
             Shop by{" "}
             <span className=" italic text-[#E8420A]">Category</span>
           </h2>
+          <p className="font-light italic text-gray-800">Curated styles for every taste</p>
         </div>
       </div>
 
@@ -201,7 +202,7 @@ function Categories() {
                       }}
                     >
                       {/* dark overlay */}
-                      <div className="absolute inset-0 bg-black/40 rounded-[inherit]" />
+                      <div className="absolute inset-0 bg-black/30 rounded-[inherit]" />
 
                       {/* text */}
                       <div className="relative text-white">
