@@ -120,7 +120,7 @@ function Categories() {
             Shop by{" "}
             <span className=" italic text-[#E8420A]">Category</span>
           </h2>
-          <p className="font-light italic text-gray-800">Curated styles for every taste</p>
+          <p className="font-light italic text-gray-800 text-[17px]">Curated styles for every taste</p>
         </div>
       </div>
 
