@@ -89,7 +89,7 @@ export default function LandingPage() {
                             Anywhere
                         </h1>
 
-                        <p className="text-[17px] italic text-gray-500 leading-[1.8] max-w-[300px] font-light">
+                        <p className="text-[17px] italic text-gray-800 leading-[1.8] max-w-[300px] font-light">
                             Refresh your style with on-trend pieces from our latest clothing
                             collection. Anyone can get dressed up and glamorous.
                         </p>
@@ -105,10 +105,10 @@ export default function LandingPage() {
                                 </button>
                             </Link>
 
-                            <button className="flex items-center gap-2 px-7 py-3 border border-black/20
+                            <button className="flex items-center gap-2 px-7 py-3 border border-[#E8420A]
                                 rounded-full text-xs font-medium tracking-wider uppercase
-                                text-gray-700 hover:border-black hover:text-black transition">
-                                Learn More
+                                text-black hover:border-[#c93800] hover:-translate-y-[2px] hover:text-black transition">
+                                Our offers
                             </button>
                             <img src={arrow}
                                 className="hidden md:block absolute"

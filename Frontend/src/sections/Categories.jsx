@@ -115,13 +115,17 @@ function Categories() {
 
       {/* Title */}
       <div className="flex items-end justify-between mb-12">
-        <div className="space-y-5 ">
-          <h2 className="font-serif font-bold text-4xl lg:text-5xl  text-gray-900 mt-2 leading-tight">
-            Shop by{" "}
-            <span className=" italic text-[#E8420A]">Category</span>
-          </h2>
-          <p className="font-light italic text-gray-800 text-[17px]">Curated styles for every taste</p>
+        <div className="w-full h-full flex text-center items-center justify-center">
+          <div className="space-y-5">
+            <h2 className="font-serif font-bold text-4xl lg:text-5xl  text-gray-900 mt-2 leading-tight">
+              Shop by{" "}
+              <span className=" italic text-[#E8420A]">Category</span>
+            </h2>
+            <p className="font-light  italic text-gray-800 text-[17px]">Explore our curated selection of high-end essentials,
+              designed for the <br/> modern connoisseur of timeless style and elegance.</p>
+          </div>
         </div>
+
       </div>
 
       {/* Cards container — add a wrapper that holds fixed total width */}
