@@ -26,48 +26,36 @@ function Categories() {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
+  const titleRef = useRef();
 
-  // useEffect(() => {
-  //   const ctx = gsap.context(() => {
+  useEffect(() => {
+    const animation = gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 3,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 90%",
+          end: "top 60%",
+          scrub:2,
+          toggleActions: "play reverse play reverse",
+        }
+      }
+    );
 
-  //     // Force clean initial state
-  //     gsap.set(containerRef.current, { gap: "0px" });
-  //     cardsRef.current.forEach(card => gsap.set(card, { rotateY: 0 }));
-
-  //     const tl = gsap.timeline({
-  //       delay: 0.3,
-  //       scrollTrigger: {
-  //         trigger: sectionRef.current,
-  //         start: "top 40%",
-  //         toggleActions: "play reverse play reverse",
-  //       }
-  //     });
-
-  //     // Step 1 — gap splits
-  //     tl.fromTo(containerRef.current,
-  //       { gap: "0px" },
-  //       { gap: "16px", duration: 0.7, ease: "power2.inOut" },
-  //       "+=0.3"
-  //     );
-
-  //     // Step 2 — all slices flip simultaneously
-  //     cardsRef.current.forEach((card) => {
-  //       tl.fromTo(card,
-  //         { rotateY: 0 },
-  //         { rotateY: 180, duration: 1.4, ease: "power2.inOut" },
-  //         "<"
-  //       );
-  //     });
-
-  //   }, sectionRef);
-
-  //   return () => ctx.revert();
-  // }, []);
+    return () => {
+      animation.scrollTrigger?.kill();
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ✅ Only run the flip animation on lg screens and above
+      //  Only run the flip animation on lg screens and above
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
@@ -98,7 +86,7 @@ function Categories() {
         });
       });
 
-      // ✅ On mobile — just show the back face immediately, no animation
+      //  On mobile — just show the back face immediately, no animation
       mm.add("(max-width: 1023px)", () => {
         cardsRef.current.forEach(card => {
           gsap.set(card, { rotateY: 180 });
@@ -115,14 +103,14 @@ function Categories() {
 
       {/* Title */}
       <div className="flex items-end justify-between mb-12">
-        <div className="w-full h-full flex text-center items-center justify-center">
+        <div ref={titleRef} style={{ opacity: 0 }} className="w-full h-full flex text-center items-center justify-center">
           <div className="space-y-5">
             <h2 className="font-serif font-bold text-4xl lg:text-5xl  text-gray-900 mt-2 leading-tight">
               Shop by{" "}
               <span className=" italic text-[#E8420A]">Category</span>
             </h2>
             <p className="font-light  italic text-gray-800 text-[17px]">Explore our curated selection of high-end essentials,
-              designed for the <br/> modern connoisseur of timeless style and elegance.</p>
+              designed for the <br /> modern connoisseur of timeless style and elegance.</p>
           </div>
         </div>
 
