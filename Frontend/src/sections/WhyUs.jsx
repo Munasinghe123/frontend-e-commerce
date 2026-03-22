@@ -6,7 +6,6 @@ import delivery from '../Images/whyUs/delivery.jpg';
 import clothes from '../Images/whyUs/clothes.jpg';
 import payments from '../Images/whyUs/payments.jpg';
 import support from '../Images/whyUs/support.jpg';
-import bg from '../Images/whyUs/why-us-bg.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
