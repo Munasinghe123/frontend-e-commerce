@@ -137,7 +137,7 @@ export default function LandingPage() {
 
                 {/* Col 3 */}
                 <div className="hidden xl:block col-3 mt-32">
-                    <div className="female-img bg-gray-200 p-4">
+                    <div className="female-img bg-gray-100 p-4">
                         <img src={female} alt="woman" className=" w-full object-cover" />
                     </div>
                 </div>
