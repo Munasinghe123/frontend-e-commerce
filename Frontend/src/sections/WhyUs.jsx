@@ -79,8 +79,8 @@ function WhyUs() {
   );
 
   return (
-    <div className='relative h-[100vh] w-full'>
-      
+    <div className='relative min-h-screen  w-full'>
+
       <div className='relative grid grid-cols-1 h-full py-5 z-10'>
 
 
@@ -91,10 +91,11 @@ function WhyUs() {
             <h2 className="font-serif font-bold text-4xl lg:text-5xl text-gray-900 leading-tight">
               Why <span className="italic text-[#E8420A]">Choose Us</span>
             </h2>
-            <p className="font-light italic text-gray-800 text-[17px]">
+            <p className=" italic text-gray-700 text-[17px]">
               The essence of our craft is rooted in precision, simplicity, and a deep respect <br />
               for timeless design that transcends fleeting trends.
             </p>
+
           </div>
 
           <div className='w-full space-x-16 flex justify-center items-center'>
@@ -136,7 +137,7 @@ function WhyUs() {
         </div>
 
       </div>
-      <div className="absolute bottom-0 left-0 z-0  w-full overflow-hidden leading-none">
+      <div className="absolute bottom-0 left-0 z-0  w-full overflow-visible leading-none">
         <svg
           viewBox="0 0 1440 320"
           className="w-full h-[700px]"

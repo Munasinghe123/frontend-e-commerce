@@ -10,6 +10,7 @@ import shoes from '../Images/categories/catShoes.jpg';
 import caps from '../Images/categories/catStreetWear.jpg';
 import bags from '../Images/categories/catAccesories.jpg';
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
@@ -41,7 +42,7 @@ function Categories() {
           trigger: titleRef.current,
           start: "top 90%",
           end: "top 60%",
-          scrub:2,
+          scrub: 2,
           toggleActions: "play reverse play reverse",
         }
       }
@@ -62,14 +63,18 @@ function Categories() {
         gsap.set(containerRef.current, { gap: "0px" });
         cardsRef.current.forEach(card => gsap.set(card, { rotateY: 0 }));
 
-        const tl = gsap.timeline({
-          delay: 0.3,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 40%",
-            toggleActions: "play reverse play reverse",
-          }
-        });
+        // NEW — pin + play on enter
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: sectionRef.current,
+    start: "bottom bottom",
+    end: "+=600",
+    pin: true,
+    anticipatePin: 1,
+    onEnter: () => tl.play(),
+    onLeaveBack: () => tl.reverse(),
+  }
+});
 
         tl.fromTo(containerRef.current,
           { gap: "0px" },
@@ -99,22 +104,33 @@ function Categories() {
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={sectionRef} className="w-full min-h-screen bg-[#F5F0EB] px-6 lg:px-12 py-20 lg:py-10">
+    <section ref={sectionRef} className="relative w-full min-h-screen bg-[#F5F0EB] px-6 lg:px-12 py-20 lg:py-10">
 
-      {/* Title */}
-      <div className="flex items-end justify-between mb-12">
-        <div ref={titleRef} style={{ opacity: 0 }} className="w-full h-full flex text-center items-center justify-center">
-          <div className="space-y-5">
-            <h2 className="font-serif font-bold text-4xl lg:text-5xl  text-gray-900 mt-2 leading-tight">
-              Shop by{" "}
-              <span className=" italic text-[#E8420A]">Category</span>
-            </h2>
-            <p className="font-light  italic text-gray-800 text-[17px]">Explore our curated selection of high-end essentials,
-              designed for the <br /> modern connoisseur of timeless style and elegance.</p>
-          </div>
+      <div className="relative flex mb-12 items-center justify-center w-full">
+
+        <div ref={titleRef} style={{ opacity: 0 }} className="text-center space-y-2">
+          <h2 className="font-serif font-bold text-4xl lg:text-5xl text-gray-900 mt-2 leading-tight">
+            Shop by{" "}
+            <span className="italic text-[#E8420A]">Category</span>
+          </h2>
+          <p className=" italic text-gray-600 text-[17px]">
+            Explore our curated selection of high-end essentials,
+            designed for the <br /> modern connoisseur of timeless style and elegance.
+          </p>
         </div>
 
+        <a
+          href="/shop"
+          className="absolute right-4 flex items-center gap-2 px-8 py-3 bg-[#E8420A] text-white 
+                                        rounded-full text-xs font-semibold tracking-wider uppercase
+                                        shadow-lg shadow-orange-500/30 
+                                        hover:-translate-y-[2px] hover:bg-[#c93800] transition-all"
+        >
+          Browse All →
+        </a>
       </div>
+
+
 
       {/* Cards container — add a wrapper that holds fixed total width */}
       <div className="relative w-full h-[420px] lg:h-[520px]">

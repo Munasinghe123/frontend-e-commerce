@@ -101,13 +101,13 @@ export default function LandingPage() {
                                         shadow-lg shadow-orange-500/30 
                                         hover:-translate-y-[2px] hover:bg-[#c93800] transition-all">
                                     Shop Now
-                                    <ArrowRight size={15} />
+                            
                                 </button>
                             </Link>
 
                             <button className="flex items-center gap-2 px-7 py-3 border border-[#E8420A]
                                 rounded-full text-xs font-medium tracking-wider uppercase
-                                text-black hover:border-[#c93800] hover:-translate-y-[2px] hover:text-black transition">
+                                text-[#E8420A] hover:border-[#c93800] hover:-translate-y-[2px] transition">
                                 Our offers
                             </button>
                             <img src={arrow}
@@ -137,7 +137,7 @@ export default function LandingPage() {
 
                 {/* Col 3 */}
                 <div className="hidden xl:block col-3 mt-32">
-                    <div className="female-img bg-gray-100 p-4">
+                    <div className="female-img bg-gray-200 p-4">
                         <img src={female} alt="woman" className=" w-full object-cover" />
                     </div>
                 </div>
