@@ -1,129 +1,155 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import quality from "../Images/whyUs/clothes.jpg";
-import payments from "../Images/whyUs/payments.jpg";
-import delivery from "../Images/whyUs/delivery.jpg";
-import support from "../Images/whyUs/support.jpg";
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import whyus from '../Images/whyUs/why-us .jpg';
+import delivery from '../Images/whyUs/delivery.jpg';
+import clothes from '../Images/whyUs/clothes.jpg';
+import payments from '../Images/whyUs/payments.jpg';
+import support from '../Images/whyUs/support.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const cards = [
-  {
-    img: quality,
-    title: "Premium Quality",
-    desc: "Every product is carefully selected and quality tested.",
-    height: 380,
-    float: { duration: 3.2, yAmount: 14, delay: 0 },
-  },
-  {
-    img: payments,
-    title: "Secure Payments",
-    desc: "All payments are encrypted and protected.",
-    height: 380,
-    float: { duration: 2.8, yAmount: 10, delay: 0.5 },
-  },
-  {
-    img: delivery,
-    title: "Fast Delivery",
-    desc: "Nationwide shipping within 2–3 days.",
-    height: 380,
-    float: { duration: 3.6, yAmount: 16, delay: 0.9 },
-  },
-  {
-    img: support,
-    title: "24/7 Support",
-    desc: "Our team is always here to help you.",
-    height: 380,
-    float: { duration: 3.0, yAmount: 12, delay: 0.3 },
-  },
-];
-
 function WhyUs() {
-  const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
+  const leftRef1 = useRef(null);
+  const leftRef2 = useRef(null);
+  const rightRef1 = useRef(null);
+  const rightRef2 = useRef(null);
+  const centerRef = useRef(null);
+  const headingRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    const scrollConfig = {
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      }
+    };
 
-      // Scroll reveal — each card staggers in
-      cardRefs.current.forEach((card, i) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: i * 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 70%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
+    gsap.fromTo(headingRef.current,
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "expo.out", ...scrollConfig }
+    );
 
-        // Yo-yo float — each card bobs at its own pace
-        const { duration, yAmount, delay } = cards[i].float;
-        gsap.to(card, {
-          y: `-=${yAmount}`,
-          duration,
-          delay,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-        });
-      });
+    // Left block 
+    gsap.fromTo([leftRef1.current, leftRef2.current],
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 3, ease: "expo.out", ...scrollConfig }
+    );
 
-    }, sectionRef);
+    // Center image
+    gsap.fromTo(centerRef.current,
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 3, ease: "expo.out", ...scrollConfig }
+    );
 
-    return () => ctx.revert();
+    // Right block 
+    gsap.fromTo([rightRef1.current, rightRef2.current],
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 3, ease: "expo.out", ...scrollConfig }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
   }, []);
 
+  const cardStyle = {
+    boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
+  };
+
+  const cardClass = 'bg-white w-[220px] h-[450px] rounded-full flex justify-center items-center space-y-6 p-5 flex-col';
+
+  const CardContent = ({ img, title, desc }) => (
+    <>
+      <img src={img} className='rounded-full w-40 h-40 object-cover' />
+      <div className='text-center px-2'>
+        <h3 style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          className="italic font-semibold text-gray-800 text-lg mb-2">
+          {title}
+        </h3>
+        <p className="text-gray-500 text-xs leading-relaxed mb-4">{desc}</p>
+        <button
+          className="text-xs italic underline underline-offset-4 text-[#E8420A] hover:text-gray-800 transition-colors duration-200"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          Learn more →
+        </button>
+      </div>
+    </>
+  );
+
   return (
-    <section ref={sectionRef} className="relative flex-1 bg-[#F5F0EB] xl:h-[100vh] pb-10 px-14 lg:py-10">
+    <div className='relative min-h-screen  w-full'>
 
-      <div className="space-y-5 ">
-        <h2 className="text-5xl font-serif font-bold">
-          Why <span className="italic text-[#E8420A]">Choose</span> Us
-        </h2>
-        <p className="font-light italic text-gray-800">Everything we do is built around you</p>
-      </div>
+      <div className='relative grid grid-cols-1 h-full py-5 z-10'>
 
-      <div className="grid grid-cols-1 xl:grid-cols-4 items-end gap-5 w-full">
-        {cards.map((card, i) => (
-          <div
-            key={i}
-            ref={(el) => (cardRefs.current[i] = el)}
-            className="relative flex-1 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] h-[220px] xl:h-[380px] cursor-pointer group"
-            style={{
-              height: card.height,
-              backgroundImage: `url(${card.img})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 0,
-              willChange: "transform",
 
-            }}
-          >
+        <div className='overflow-hidden w-full space-y-10'>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/80" />
 
-            <div className="absolute bottom-8 left-4  text-white max-w-[200px]">
-              <h3 className="text-2xl font-bold mb-1 ">{card.title}</h3>
-              <p className="text-white/70 text-sm leading-snug">{card.desc}</p>
-              <button className="mt-4 text-xs font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Learn More →
-              </button>
-            </div>
+          <div ref={headingRef} className="space-y-5 pr-6 text-center" style={{ opacity: 0 }}>
+            <h2 className="font-serif font-bold text-4xl lg:text-5xl text-gray-900 leading-tight">
+              Why <span className="italic text-[#E8420A]">Choose Us</span>
+            </h2>
+            <p className=" italic text-gray-700 text-[17px]">
+              The essence of our craft is rooted in precision, simplicity, and a deep respect <br />
+              for timeless design that transcends fleeting trends.
+            </p>
+
           </div>
-        ))}
-      </div>
 
-    </section>
+          <div className='w-full space-x-16 flex justify-center items-center'>
+
+            {/* Left Cards */}
+            <div className='flex space-x-10'>
+              <div ref={leftRef1} style={{ ...cardStyle, opacity: 0 }} className={cardClass}>
+                <CardContent img={delivery} title="Shipping Free"
+                  desc="We ship your order straight to your door. Track every step with real-time updates." />
+              </div>
+              <div ref={leftRef2} style={{ ...cardStyle, opacity: 0 }} className={cardClass}>
+                <CardContent img={clothes} title="Premium Quality"
+                  desc="Every piece is crafted with precision and care, using only the finest fabrics." />
+              </div>
+            </div>
+
+            {/* Center Image */}
+            <div ref={centerRef} style={{ opacity: 0 }}>
+              <img
+                src={whyus}
+                className='w-[320px] h-[500px] object-cover rounded-[999px]'
+                style={{ objectPosition: "center top" }}
+              />
+            </div>
+
+            {/* Right Cards */}
+            <div className='flex space-x-10'>
+              <div ref={rightRef1} style={{ ...cardStyle, opacity: 0 }} className={cardClass}>
+                <CardContent img={payments} title="Secure Payments"
+                  desc="Your transactions are protected with industry-leading encryption." />
+              </div>
+              <div ref={rightRef2} style={{ ...cardStyle, opacity: 0 }} className={cardClass}>
+                <CardContent img={support} title="24/7 Support"
+                  desc="Our team is always here for you. Reach us anytime by chat, email, or phone." />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div className="absolute bottom-0 left-0 z-0  w-full overflow-visible leading-none">
+        <svg
+          viewBox="0 0 1440 320"
+          className="w-full h-[700px]"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="#E1D3C7"
+            d="M0,160L80,170.7C160,181,320,203,480,192C640,181,800,139,960,133.3C1120,128,1280,160,1360,176L1440,192V320H0Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
   );
 }
 

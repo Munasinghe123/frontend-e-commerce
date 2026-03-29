@@ -51,7 +51,11 @@ function Header() {
         <div className="w-full flex justify-center pt-6">
 
             {/* Desktop */}
-            <div className="hidden xl:flex items-center justify-between px-10 py-3 
+            <div
+                style={{
+                    boxShadow: "0 4px 15px rgba(0,0,0,0.08)"
+                }}
+                className="hidden xl:flex items-center justify-between px-10 py-3 
                         w-[92%] max-w-[1400px] 
                         bg-white/80 backdrop-blur-md
                         border border-[#ece8e1]
@@ -61,7 +65,7 @@ function Header() {
 
                 <Link to="/">
                     <div className="flex items-center gap-2">
-                        <img src={Logo} className="h-16 w-16 rounded-2xl object-contain" />
+                        <img src={Logo} className="h-10 w-10 rounded-2xl object-contain" />
                         <span className="font-playfair font-bold text-lg text-gray-900">
                             ShopSwift
                         </span>
